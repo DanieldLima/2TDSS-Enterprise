@@ -19,8 +19,7 @@ import javax.persistence.Transient;
 
 @Entity 
 @Table(name="T_ALUNO")
-@SequenceGenerator(name="aluno"
-,sequenceName="SQ_T_ALUNO", allocationSize=1)
+@SequenceGenerator(name="aluno",sequenceName="SQ_T_ALUNO", allocationSize=1)
 public class Aluno implements Serializable {
 
 	@Id
@@ -51,7 +50,7 @@ public class Aluno implements Serializable {
 	@Transient //não será uma coluna na tabela no banco 
 	private String token;
 	
-	@Lob //gravar arquivo no banco
+	@Lob //gravar arquivo no banco (BLOB)
 	@Column(name="fl_foto")
 	private byte[] foto;
 	
