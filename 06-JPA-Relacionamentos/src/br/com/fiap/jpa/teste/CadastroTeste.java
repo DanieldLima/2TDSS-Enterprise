@@ -10,6 +10,7 @@ import br.com.fiap.jpa.dao.NotaFiscalDAO;
 import br.com.fiap.jpa.dao.PedidoDAO;
 import br.com.fiap.jpa.dao.impl.NotaFiscalDAOImpl;
 import br.com.fiap.jpa.dao.impl.PedidoDAOImpl;
+import br.com.fiap.jpa.entity.ItemPedido;
 import br.com.fiap.jpa.entity.NotaFiscal;
 import br.com.fiap.jpa.entity.Pedido;
 import br.com.fiap.jpa.exception.CommitException;
@@ -30,6 +31,12 @@ public class CadastroTeste {
 		NotaFiscal nota = new NotaFiscal(
 				new GregorianCalendar(2018, Calendar.MARCH, 16),
 				400, pedido);
+		
+		ItemPedido item1  = new ItemPedido("Pizza",20);
+		ItemPedido item2 = new ItemPedido("Coca-Cola",5);
+		
+		pedido.adicionarItem(item1);
+		pedido.adicionarItem(item2);
 		
 		try {
 			//pedidoDao.inserir(pedido);

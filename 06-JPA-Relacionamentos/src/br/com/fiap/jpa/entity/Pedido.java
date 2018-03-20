@@ -1,12 +1,16 @@
 package br.com.fiap.jpa.entity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,6 +36,14 @@ public class Pedido {
 	
 	@OneToOne(mappedBy="pedido")
 	private NotaFiscal nota;
+	
+	@OneToMany(mappedBy="pedido",cascade=CascadeType.PERSIST)
+	private List<ItemPedido> itens = new ArrayList<>();
+	
+	public void adicionarItem(ItemPedido item) {
+		itens.add(item);
+		item.setPedido(this);
+	}
 	
 	public Pedido(Calendar data, String descricao) {
 		super();
@@ -74,6 +86,14 @@ public class Pedido {
 
 	public void setNota(NotaFiscal nota) {
 		this.nota = nota;
+	}
+
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
 	}
 	
 }
