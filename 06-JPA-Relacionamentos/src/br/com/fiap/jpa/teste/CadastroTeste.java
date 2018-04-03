@@ -35,9 +35,6 @@ public class CadastroTeste {
 		ItemPedido item1  = new ItemPedido("Pizza",20);
 		ItemPedido item2 = new ItemPedido("Coca-Cola",5);
 		
-		pedido.adicionarItem(item1);
-		pedido.adicionarItem(item2);
-		
 		try {
 			//pedidoDao.inserir(pedido);
 			notaDao.inserir(nota);

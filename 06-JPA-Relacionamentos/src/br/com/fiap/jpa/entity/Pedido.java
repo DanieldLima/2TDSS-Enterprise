@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Pedido {
 	@Column(name="ds_pedido",nullable=false,length=200)
 	private String descricao;
 	
-	@OneToOne(mappedBy="pedido")
+	@OneToOne(mappedBy="pedido",fetch=FetchType.LAZY)
 	private NotaFiscal nota;
 	
 	@OneToMany(mappedBy="pedido",cascade=CascadeType.PERSIST)
