@@ -36,33 +36,17 @@ public class Pedido {
 	@Column(name="ds_pedido", nullable=false, length=200)
 	private String descricao;
 	
-<<<<<<< HEAD
 	@OneToOne(mappedBy="pedido",fetch=FetchType.LAZY)
 	private NotaFiscal nota;
 	
-	@OneToMany(mappedBy="pedido",cascade=CascadeType.PERSIST)
-=======
-	@OneToOne(mappedBy="pedido", fetch=FetchType.LAZY)
-	private NotaFiscal nota;
-	
 	@OneToMany(mappedBy="pedido", cascade=CascadeType.PERSIST)
->>>>>>> 42e2becb2e6cc0b442350c0b0abd3d48ed14b293
 	private List<ItemPedido> itens = new ArrayList<>();
 	
 	public void adicionarItem(ItemPedido item) {
 		itens.add(item);
 		item.setPedido(this);
-<<<<<<< HEAD
 	}
 	
-	public Pedido(Calendar data, String descricao) {
-		super();
-		this.data = data;
-		this.descricao = descricao;
-=======
->>>>>>> 42e2becb2e6cc0b442350c0b0abd3d48ed14b293
-	}
-
 	public Pedido() {
 		super();
 	}
@@ -105,23 +89,19 @@ public class Pedido {
 		this.nota = nota;
 	}
 
-<<<<<<< HEAD
 	public List<ItemPedido> getItens() {
 		return itens;
 	}
 
 	public void setItens(List<ItemPedido> itens) {
 		this.itens = itens;
-=======
+	}
 	public List<ItemPedido> getItemPedido() {
 		return itens;
 	}
 
 	public void setItemPedido(List<ItemPedido> itemPedido) {
 		this.itens = itemPedido;
->>>>>>> 42e2becb2e6cc0b442350c0b0abd3d48ed14b293
 	}
-	
-	
 
 }

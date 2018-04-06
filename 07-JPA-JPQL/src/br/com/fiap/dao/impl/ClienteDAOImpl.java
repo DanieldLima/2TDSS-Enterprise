@@ -14,6 +14,22 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 		super(entityManager);
 	}
 
+	@Override
+	public List<Cliente> pesquisarPorEstado(String estado) {
+		return em.createQuery("from Cliente c where "
+				+ "c.endereco.cidade.uf = :est",Cliente.class)
+				.setParameter("est", estado)
+				.getResultList();
+	}
+
+	@Override
+	public List<Cliente> pesquisarPorDiasReserva(int dias) {
+		return em.createQuery("select r.cliente from "
+				+ "Reserva r where r.numeroDias = :D",Cliente.class)
+				.setParameter("D", dias)
+				.getResultList();
+	}
+
 }
 
 

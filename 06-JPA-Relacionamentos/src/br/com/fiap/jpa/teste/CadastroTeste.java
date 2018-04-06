@@ -10,11 +10,7 @@ import javax.persistence.EntityManagerFactory;
 
 import br.com.fiap.jpa.dao.NotaFiscalDAO;
 import br.com.fiap.jpa.dao.impl.NotaFiscalDAOImpl;
-<<<<<<< HEAD
-import br.com.fiap.jpa.dao.impl.PedidoDAOImpl;
-=======
 import br.com.fiap.jpa.entity.Imposto;
->>>>>>> 42e2becb2e6cc0b442350c0b0abd3d48ed14b293
 import br.com.fiap.jpa.entity.ItemPedido;
 import br.com.fiap.jpa.entity.NotaFiscal;
 import br.com.fiap.jpa.entity.Pedido;
@@ -52,23 +48,7 @@ public class CadastroTeste {
 		List<Imposto> impostos = new ArrayList<>();
 		impostos.add(imposto1);
 		impostos.add(imposto2);
-		
-<<<<<<< HEAD
-		ItemPedido item1  = new ItemPedido("Pizza",20);
-		ItemPedido item2 = new ItemPedido("Coca-Cola",5);
-		
-		try {
-			//pedidoDao.inserir(pedido);
-			notaDao.inserir(nota);
-			notaDao.commit();
-		} catch (CommitException e) {
-			e.printStackTrace();
-		}
-=======
-		//Adiciona os impostos na nota fiscal
-		nf.setImpostos(impostos);
->>>>>>> 42e2becb2e6cc0b442350c0b0abd3d48ed14b293
-		
+	
 		NotaFiscalDAO nfDAO = new NotaFiscalDAOImpl(em);
 
 		nfDAO.inserir(nf);
