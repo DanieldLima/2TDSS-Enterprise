@@ -12,10 +12,12 @@ import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
 import br.com.fiap.dao.EntityManagerFactorySingleton;
 import br.com.fiap.dao.PacoteDAO;
+import br.com.fiap.dao.ReservaDAO;
 import br.com.fiap.dao.TransporteDAO;
 import br.com.fiap.dao.impl.CidadeDAOImpl;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
 import br.com.fiap.dao.impl.PacoteDAOImpl;
+import br.com.fiap.dao.impl.ReservaDAOImpl;
 import br.com.fiap.dao.impl.TransporteDAOImpl;
 import br.com.fiap.entity.Cidade;
 import br.com.fiap.entity.Cliente;
@@ -42,7 +44,7 @@ public class ConsoleView {
 		}
 		
 		System.out.println("BUSCAR POR NOME");
-		lista = cidadeDao.buscarPorNome("Lon");
+		lista = cidadeDao.buscarPorNome("lon");
 		for (Cidade cidade : lista) {
 			System.out.println(cidade.getNome() + " " +
 					cidade.getUf());
@@ -109,6 +111,43 @@ public class ConsoleView {
 		for (Cliente cliente : clientes) {
 			System.out.println(cliente.getNome() + " " +
 					cliente.getEndereco().getCidade().getUf());
+		}
+		
+		
+		//Criar a ReservaDAO
+		ReservaDAO reservaDao = new ReservaDAOImpl(em);
+		//Exibir a quantidade de reservas
+		System.out.println("Reservas: " + 
+						reservaDao.contarQuantidade());
+		
+		//Exibir a média dos preços dos pacotes
+		System.out.println("Preços: " + 
+						pacoteDao.calcularMediaPreco());
+		
+		//Exibir a quantidade de reserva do cliente X
+		System.out.println("Reservas do cliente: "
+				+ reservaDao.contarQuantidadePorCliente(2));
+		
+		//Exibir a quantidade de pacotes com transporte
+		System.out.println("Pacotes com transportes: "
+				+ pacoteDao.contarPorTransporte());
+		
+		//Exibir a quantidade de reserva dentro de um período
+		Calendar inicio1 = new GregorianCalendar(2015,
+										Calendar.JANUARY,1);
+		System.out.println("Reservas: " + 
+				reservaDao.contarPorDatas(inicio1, fim));
+		
+		//Contar a quantidade de reseva por estado do cliente
+		System.out.println("Reservas Estado: " +
+				reservaDao.contarPorEstadoCliente("PR"));
+		
+		//Exibir os pacotes por destino
+		pacotes = pacoteDao.buscarPorDestino("al");
+		System.out.println("BUSCAR PACOTES POR DESTINO");
+		//Exibe os pacotes
+		for (Pacote pacote : pacotes) {
+			System.out.println(pacote.getDescricao());
 		}
 		
 		em.close();

@@ -9,10 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+@NamedQuery(name="Pacote.contarPorTransporte",
+	query="select count(p) from Pacote p where "
+			+ "p.transporte is not null")
 
 @Entity
 @Table(name="JPA_T_PACOTE")
