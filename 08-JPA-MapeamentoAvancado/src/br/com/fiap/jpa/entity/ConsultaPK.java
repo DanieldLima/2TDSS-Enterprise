@@ -7,12 +7,14 @@ import java.util.Calendar;
 //Obrigatório implementar Serializable
 public class ConsultaPK implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private int medico;
-	
+
 	private int paciente;
-	
+
 	private Calendar data;
-	
+
 	public ConsultaPK(int medico, int paciente, Calendar data) {
 		super();
 		this.medico = medico;
@@ -62,23 +64,28 @@ public class ConsultaPK implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+
 		if (obj == null)
 			return false;
+
 		if (getClass() != obj.getClass())
 			return false;
+
 		ConsultaPK other = (ConsultaPK) obj;
 		if (data == null) {
 			if (other.data != null)
 				return false;
+
 		} else if (!data.equals(other.data))
 			return false;
+
 		if (medico != other.medico)
 			return false;
+
 		if (paciente != other.paciente)
 			return false;
+
 		return true;
 	}
-	
-	
-	
+
 }

@@ -14,29 +14,29 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_CONSULTA")
+@Table(name = "T_CONSULTA")
 @IdClass(ConsultaPK.class)
 public class Consulta {
 
 	@Id
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="nr_crm")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "nr_crm")
 	private Medico medico;
 
 	@Id
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="cd_paciente")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "cd_paciente")
 	private Paciente paciente;
-	
+
 	@Id
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="dt_consulta")
+	@Column(name = "dt_consulta")
 	private Calendar data;
-	
-	@Column(name="ds_consultorio")
+
+	@Column(name = "ds_consultorio")
 	private String consultorio;
-	
-	@Column(name="st_convenio")
+
+	@Column(name = "st_convenio")
 	private boolean convenio;
 
 	public Consulta(Medico medico, Paciente paciente, Calendar data, String consultorio, boolean convenio) {
@@ -92,7 +92,5 @@ public class Consulta {
 	public void setConvenio(boolean convenio) {
 		this.convenio = convenio;
 	}
-	
-	
-	
+
 }

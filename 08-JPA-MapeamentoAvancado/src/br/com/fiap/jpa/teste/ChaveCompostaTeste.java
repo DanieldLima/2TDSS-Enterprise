@@ -21,7 +21,7 @@ public class ChaveCompostaTeste {
 		EntityManagerFactory fabrica = EntityManagerFactorySingleton.getInstance();
 		EntityManager em = fabrica.createEntityManager();
 		
-		Medico medico = new Medico(123, "Drauzio", "Geral");
+		Medico medico = new Medico(123, "Drauzio", "Geral", 12000, 123);
 		
 		Paciente paciente = new Paciente("Maria", 
 				new GregorianCalendar(1990, Calendar.MARCH, 2));
