@@ -13,6 +13,6 @@ public interface GenericDAO<T,K> {
 	T pesquisar(K codigo);
 	void salvar() throws DBException;
 	
-	List<T> listar(); 
+	List<T> listar();
 	
 }
