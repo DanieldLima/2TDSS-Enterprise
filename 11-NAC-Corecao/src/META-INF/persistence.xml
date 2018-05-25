@@ -7,7 +7,7 @@
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<!-- update, validate -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/fiap" />
